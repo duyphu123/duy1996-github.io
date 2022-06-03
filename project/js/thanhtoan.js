@@ -4,33 +4,12 @@ const menuEL = document.querySelector(".nav-list");
 
 menuIconEl.addEventListener("click", function () {
   menuEL.classList.toggle("show");
-  overlayOpen1.style.display = "block";
 });
 window.addEventListener("resize", function () {
   if (window.innerWidth > 768) {
     menuEL.classList.remove("show");
-    overlayOpen.style.display = "none";
   }
 });
-const overlayOpen1 = document.querySelector(".overlay-thanhtoan");
-const cartBtn1 = document.querySelector(".cart-side .btn-close");
-const cartShowOpen1 = document.querySelector(".cart");
-cartShowOpen1.addEventListener("click", function () {
-    document.querySelector(".cart-side").style.right = "0";
-    overlayOpen1.style.display = "block";
-    
-  });
-  cartBtn1.addEventListener("click", function () {
-    document.querySelector(".cart-side").style.right = "-100%";
-    overlayOpen1.style.display = "none";
-  });
-  overlayOpen1.addEventListener("click", function () {
-    menuEL.classList.remove("show");
-    overlayOpen1.style.display = "none";
-   
-    document.querySelector(".cart-side").style.right = "-100%";
-   
-  });
 const btnEl1 = document.querySelector(".btn1");
 const dropEL1 = document.querySelector(".dropdown-menu1");
 const sizeS1 = document.querySelector(".sizeS1");
@@ -86,9 +65,7 @@ const renderProduct = (arr) => {
     // summaryElement.style.display = "none";
     // totalProductsElement.style.display = "none";
     const dathang = document.querySelector(".dathang");
-    const btnDathang=document.querySelector(".btn-dathang2")
     dathang.style.display = "none";
-    btnDathang.style.display = "none";
     return;
   }
   for (let i = 0; i < arr.length; i++) {
@@ -131,7 +108,7 @@ const renderProduct = (arr) => {
     <div class="col3">
     <div class="quantity" onchange="changeTotalProduct(${t.id}, event)">
     <input class="input1"
-     outline: none"
+    style="width: 40px; outline: none"
     type="number"
     value="${t.total}"
     min="1"
@@ -184,15 +161,15 @@ const renderProduct = (arr) => {
   <div class="row1 d-flex">
                   <p class="text-row2">${numberFormater.format(
                     subTotalAll
-                  )}</p><p>VNĐ</p>
+                  )}</p>đ
                 </div>
                 <div class="row1 d-flex">
-                  <p class="text-row2">0</p><p>VNĐ</p>
+                  <p class="text-row2">0</p>đ
                 </div>
                 <div class="row1 d-flex">
                   <p class="text-row2 tongcong">${numberFormater.format(
                     subTotalAll
-                  )}</p><p>VNĐ</p>
+                  )}</p>đ
                 </div>
   `;
     });
@@ -209,13 +186,13 @@ const renderProduct = (arr) => {
       summaryUlElement[i].innerHTML += `${numberFormater.format(subTotal)}`;
       const summaryUlElement2 = document.querySelector(".col-right2");
       let subTotalAll = 0;
-      for (let i = 0; i < arr.length; i++) {
-        const priceA = document.querySelectorAll(".gia-thanhtoan span");
-        console.log(priceA);
-        subTotalAll += products[i].total * (priceA[i].innerHTML * 1000);
-      }
-      summaryUlElement2.innerHTML = "";
-      summaryUlElement2.innerHTML += `
+    for (let i = 0; i < arr.length; i++) {
+      const priceA=document.querySelectorAll(".gia-thanhtoan span")
+      console.log(priceA)
+      subTotalAll += products[i].total * (priceA[i].innerHTML*1000);
+    }
+    summaryUlElement2.innerHTML = "";
+    summaryUlElement2.innerHTML += `
     <div class="row1 d-flex">
                     <p class="text-row2">${numberFormater.format(
                       subTotalAll
@@ -231,6 +208,7 @@ const renderProduct = (arr) => {
                   </div>
     `;
     });
+ 
   }
   for (let i = 0; i < arr.length; i++) {
     const t = arr[i];
@@ -243,29 +221,30 @@ const renderProduct = (arr) => {
       summaryUlElement[i].innerHTML = "";
       summaryUlElement[i].innerHTML += `${numberFormater.format(subTotal)}`;
       const summaryUlElement2 = document.querySelector(".col-right2");
-      let subTotalAll = 0;
-      for (let i = 0; i < arr.length; i++) {
-        const priceA = document.querySelectorAll(".gia-thanhtoan span");
-        console.log(priceA);
-        subTotalAll += products[i].total * (priceA[i].innerHTML * 1000);
-      }
-      summaryUlElement2.innerHTML = "";
-      summaryUlElement2.innerHTML += `
+    let subTotalAll = 0;
+    for (let i = 0; i < arr.length; i++) {
+      const priceA = document.querySelectorAll(".gia-thanhtoan span");
+      console.log(priceA);
+      subTotalAll += products[i].total * (priceA[i].innerHTML * 1000);
+    }
+    summaryUlElement2.innerHTML = "";
+    summaryUlElement2.innerHTML += `
   <div class="row1 d-flex">
                   <p class="text-row2">${numberFormater.format(
                     subTotalAll
-                  )}</p><p>VNĐ</p>
+                  )}</p>đ
                 </div>
                 <div class="row1 d-flex">
-                  <p class="text-row2">0</p><p>VNĐ</p>
+                  <p class="text-row2">0</p>đ
                 </div>
                 <div class="row1 d-flex">
                   <p class="text-row2 tongcong">${numberFormater.format(
                     subTotalAll
-                  )}</p><p>VNĐ</p>
+                  )}</p>đ
                 </div>
   `;
     });
+    
   }
   const summaryUlElement = document.querySelectorAll(".tong span");
 
@@ -280,23 +259,25 @@ const renderProduct = (arr) => {
   }
   const summaryUlElement2 = document.querySelector(".col-right2");
   let subTotalAll = 0;
-  for (let i = 0; i < arr.length; i++) {
-    const priceA = document.querySelectorAll(".gia-thanhtoan span");
-    console.log(priceA);
-    subTotalAll += products[i].total * (priceA[i].innerHTML * 1000);
-  }
-  summaryUlElement2.innerHTML = "";
-  summaryUlElement2.innerHTML += `
+for (let i = 0; i < arr.length; i++) {
+  const priceA=document.querySelectorAll(".gia-thanhtoan span")
+  console.log(priceA)
+  subTotalAll += products[i].total * (priceA[i].innerHTML*1000);
+}
+summaryUlElement2.innerHTML = "";
+summaryUlElement2.innerHTML += `
 <div class="row1 d-flex">
-                <p class="text-row2">${numberFormater.format(subTotalAll)}</p><p>VNĐ</p>
+                <p class="text-row2">${numberFormater.format(
+                  subTotalAll
+                )}</p>đ
               </div>
               <div class="row1 d-flex">
-                <p class="text-row2">0</p><p>VNĐ</p>
+                <p class="text-row2">0</p>đ
               </div>
               <div class="row1 d-flex">
                 <p class="text-row2 tongcong">${numberFormater.format(
                   subTotalAll
-                )}</p><p>VNĐ</p>
+                )}</p>đ
               </div>
 `;
 };
@@ -320,8 +301,8 @@ const deleteProduct = (id) => {
   const popupDel = document.querySelector(".popup-delete-thanhtoan");
 
   popupDel.style.display = "block";
-  const Ok = popupDel.querySelector(".co");
-  const No = popupDel.querySelector(".khong");
+  const Ok = document.querySelector(".co");
+  const No = document.querySelector(".khong");
   Ok.addEventListener("click", function () {
     for (let i = 0; i < products.length; i++) {
       if (products[i].id == id) {
@@ -335,29 +316,7 @@ const deleteProduct = (id) => {
     popupDel.style.display = "none";
   });
 };
-// var cartProduct = document.querySelectorAll(".cart-item-thanhtoan");
-// var btnDelete = document.querySelectorAll(".fa-trash-can");
-// for (i = 0; i < cartProduct.length; i++) {
-//   var btnDelete = document.querySelectorAll(".fa-trash-can");
-//   btnDelete[i].addEventListener("click", function (event) {
-//     var ItemDelete = event.target;
-//     var ItemDeleteA =
-//       ItemDelete.parentElement.parentElement.parentElement.parentElement;
 
-//     const popupDel = document.querySelector(".popup-delete-thanhtoan");
-//     popupDel.style.display = "block";
-//     const Ok = document.querySelector(".co");
-//     const No = document.querySelector(".khong");
-//     Ok.addEventListener("click", function () {
-//       ItemDeleteA.remove();
-//       popupDel.style.display = "none";
-//       total1();
-//     });
-//     No.addEventListener("click", function () {
-//       popupDel.style.display = "none";
-//     });
-//   });
-// }
 const numberFormater = new Intl.NumberFormat("de-DE");
 // Tính tổng tiền
 const updateTotalMoney = (arr) => {};
@@ -506,18 +465,39 @@ confirm1.addEventListener("click", async function () {
       return;
     }
   } catch (err) {}
-  confirm1.addEventListener("click", function () {
-    infoTt.style.display = "none";
 
-    btnDathang2.innerHTML = "Thay Đổi Thông Tin";
-    alert("Bạn Đã Đặt Hàng Thành Công.Xin Cảm Ơn");
-    overlayOpen.style.display = "none";
-    
-  });
- 
-})
-;
+});
+confirm1.addEventListener("click", function () {
+  infoTt.style.display = "none";
 
+  btnDathang2.innerHTML = "Thay Đổi Thông Tin";
+  alert("Bạn Đã Đặt Hàng Thành Công.Xin Cảm Ơn");
+  overlayOpen.style.display = "none";
+  closeDialog();
+});
+// var cartProduct = document.querySelectorAll(".cart-item-thanhtoan");
+// var btnDelete = document.querySelectorAll(".fa-trash-can");
+// for (i = 0; i < cartProduct.length; i++) {
+//   var btnDelete = document.querySelectorAll(".fa-trash-can");
+//   btnDelete[i].addEventListener("click", function (event) {
+//     var ItemDelete = event.target;
+//     var ItemDeleteA =
+//       ItemDelete.parentElement.parentElement.parentElement.parentElement;
+
+//     const popupDel = document.querySelector(".popup-delete-thanhtoan");
+//     popupDel.style.display = "block";
+//     const Ok = document.querySelector(".co");
+//     const No = document.querySelector(".khong");
+//     Ok.addEventListener("click", function () {
+//       ItemDeleteA.remove();
+//       popupDel.style.display = "none";
+//       total1();
+//     });
+//     No.addEventListener("click", function () {
+//       popupDel.style.display = "none";
+//     });
+//   });
+// }
 const overlayOpen = document.querySelector(".overlay-thanhtoan");
 
 btnDathang2.addEventListener("click", function () {
@@ -528,13 +508,13 @@ overlayOpen.addEventListener("click", function () {
   overlayOpen.style.display = "none";
   closeDialog();
 });
-// const showDialog = () => {
-//   document.getElementById("dialog").classList.add("show");
-//   const scrollY = document.documentElement.style.getPropertyValue("--scroll-y");
-//   const body = document.body1;
-//   body.style.position = "fixed";
-//   body.style.top = `-${scrollY}`;
-// };
+const showDialog = () => {
+  document.getElementById("dialog").classList.add("show");
+  const scrollY = document.documentElement.style.getPropertyValue("--scroll-y");
+  const body = document.body1;
+  body.style.position = "fixed";
+  body.style.top = `-${scrollY}`;
+};
 const closeDialog = () => {
   const body = document.body;
   const scrollY = body.style.top;

@@ -17,12 +17,10 @@ const menuEL = document.querySelector(".nav-list");
 
 menuIconEl.addEventListener("click", function () {
   menuEL.classList.toggle("show");
-  overlayOpen.style.display = "block";
 });
 window.addEventListener("resize", function () {
   if (window.innerWidth > 768) {
     menuEL.classList.remove("show");
-    overlayOpen.style.display = "none";
   }
 });
 const overlayOpen = document.querySelector(".overlay");
@@ -38,7 +36,7 @@ cartShowOpen.addEventListener("click", function () {
     overlayOpen.style.display = "none";
   });
   overlayOpen.addEventListener("click", function () {
-    menuEL.classList.remove("show");
+   
     overlayOpen.style.display = "none";
    
     document.querySelector(".cart-side").style.right = "-100%";
